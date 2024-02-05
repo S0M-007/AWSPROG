@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="fs.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 500px;
+      position: relative;
+      font-family: sans-serif;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.6;
+    }
+
+    .log {
+      width: 460px;
+      height: 500px;
+      background: rgba(144, 131, 80, 0.7);
+      color: #fff;
+      top: 60%;
+      left: 50%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      box-sizing: border-box;
+      padding: 70px 40px;
+      border-radius: 50px;
+      box-shadow: 0 0 50px red;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      position: absolute;
+      top: -50px;
+      left: calc(50% - 50px);
+    }
+
+    h1 {
+      margin: 0;
+      padding: 0 0 20px;
+      text-align: center;
+      font-size: 22px;
+    }
+
+    .log p {
+      margin: 0;
+      padding: 0;
+      font-weight: bold;
+    }
+
+    .log input {
+      width: 100%;
+      margin-bottom: 20px;
+      border: none;
+      border-bottom: 1px solid #fff;
+      background: transparent;
+      outline: none;
+      height: 40px;
+      color: #fff;
+      font-size: 16px;
+      margin: 5px;
+    }
+
+    .btn {
+      background-color: red;
+      color: #fff;
+      padding: 8px 2px;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      text-align: center;
+      border-radius: 20px;
+      width: 100%;
+      opacity: 0.9;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    .psw {
+      float: right;
+      padding-top: 1px;
+    }
+
+    .log a {
+      color: #fff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="log">
+  <img src="https://i.imgur.com/9aXFlAG.png" class="logo">
+  <form name="loginForm" action="/register" method="post">
+    <h1>Sign-in</h1>
+    <p><label for="name"><b>Name</b></label></p>
+    <input type="text" placeholder="Enter Name" name="name" required><br><br>
+    <p><label for="dob"><b>Date of Birth</b></label></p>
+    <input type="date" placeholder="Enter DOB" name="dob" required>
+    <p><label for="email"><b>Email</b></label></p>
+    <input type="text" placeholder="Enter Email" name="email" required>
+    <p><label for="psw"><b>Password</b></label></p>
+    <input type="password" placeholder="Enter Password" name="psw" required><br><br>
+    <p><button type="submit" class="btn"><a href="fs.html">Sign-up</a></button></p><br>
+  </form>
+</div>
+<script>
+  function validateForm() {
+    var name = document.getElementsByName('name')[0].value;
+    var dob = document.getElementsByName('dob')[0].value;
+    var email = document.getElementsByName('email')[0].value;
+    var password = document.getElementsByName('psw')[0].value;    
+
+    if (name.trim() === "") {
+        alert("Please enter your name");
+        return false;
+    }
+
+    if (dob.trim() === "") {
+        alert("Please enter your Date of Birth");
+        return false;
+    }
+
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address");
+        return false;
+    }
+
+    var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    if (!passwordRegex.test(password)) {
+        alert("Password should be alphanumeric and have at least 8 characters");
+        return false;
+    }
+    window.location.href="fs.html";
+    return false;
+}
+
+</script>
+</body>
+</html>
